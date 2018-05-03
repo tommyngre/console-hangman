@@ -21,12 +21,12 @@ let Letter = function (char) {
     if (guess == this.character) {
       if (this.isGuessed == false) {
         this.isGuessed = true;
-        console.log(`Nice! ${guess} is in there :)`);
+        //console.log(`Nice! ${guess} is in there :)`);
       } else {
-        console.log(`You already guessed ${guess} :\\`);
+        //console.log(`You already guessed ${guess} :\\`);
       }
     } else {
-      console.log(`Nope. No ${guess} :(`);
+      //console.log(`Nope. No ${guess} :(`);
     }
   };
 }

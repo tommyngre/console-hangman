@@ -17,7 +17,8 @@ let Word = function (solution) {
   ///as opposed to construct it
   this.chars = solution;
   this.toString = function () {
-    let str = this.chars.map(letter => { letter.character });
+    let str = this.chars.map(letter => letter.toString())
+    .join('');
     console.log(str);
   };
   this.handleGuess = function (guess) {
