@@ -11,7 +11,6 @@ let Word = function (solution) {
     console.log(
 `  
    ${str}
-
 `);
   };
   this.handleGuess = function (guess) {

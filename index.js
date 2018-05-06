@@ -23,12 +23,11 @@ let game = {
 function stageAndCleanup() {
   game.solution = dictionary[Math.floor(Math.random() * dictionary.length)];
   game.word = {};
-  game.guessesRemaining = 10;
-  guessBank = [];
+  game.guessesRemaining = 5;
+  game.guessBank = [];
 }
 
 function getUnguessedRemaining() {
-  let acc = 0;
   //console.log(game.word.chars);
   let n = game.word.chars.map(x => x.isGuessed)
     .reduce(function (acc, i) {
@@ -36,7 +35,7 @@ function getUnguessedRemaining() {
         acc++;
       }
       return acc;
-    })
+    },0)
   //console.log(n)
   return n;
 
@@ -63,6 +62,9 @@ function replayQuestion() {
 }
 
 function handler() {
+
+  game.unguessedRemaining = getUnguessedRemaining();
+
   game.word.toString();
 
   if (game.unguessedRemaining > 0 && game.guessesRemaining > 0) {
@@ -105,7 +107,7 @@ function handler() {
       if (!(isGoodGuess == "yup")) {
         game.guessesRemaining--;
       }
-
+    
       handler();
     });
 
@@ -125,6 +127,8 @@ function handler() {
 }
 
 function start() {
+  stageAndCleanup();
+
   console.log(
     `
     
@@ -133,12 +137,10 @@ function start() {
 ~ Your word is :`
   )
 
-  stageAndCleanup();
-
   let lettersArray = [];
 
   let letters = dictionary[Math.floor(Math.random() * dictionary.length)];
-  //console.log(letters);
+  game.solution = letters;
 
   letters = letters.split('')
     .map(x => x.toUpperCase());
