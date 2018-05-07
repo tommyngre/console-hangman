@@ -105,6 +105,10 @@ function handler() {
 
       let isGoodGuess = game.word.handleGuess(answers.letter);
       if (!(isGoodGuess == "yup")) {
+
+        console.log(` 
+! Nope, no '${answers.letter}' in the solution.`)
+        
         game.guessesRemaining--;
       }
     
